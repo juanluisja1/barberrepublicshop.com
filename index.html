@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Republic - Enhancement Pencil Kit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- NEW LIGHT THEME VARIABLES & GLOBAL STYLES --- */
+        :root {
+            --color-gold: #c5a440; /* Slightly desaturated gold for a classier feel */
+            --color-dark: #2d2d2d; /* Charcoal instead of pure black for text */
+            --color-light: #FFFFFF;
+            --color-light-secondary: #f7f7f7; /* Light grey for section backgrounds */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-dark);
+            text-transform: uppercase;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* --- ANNOUNCEMENT BAR --- */
+        .announcement-bar {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            text-align: center;
+            padding: 12px 15px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* --- NEW HERO SECTION --- */
+        .hero {
+            padding: 40px 0;
+        }
+
+        .hero-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            order: 2; /* Text comes after image on mobile */
+            padding-top: 30px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .hero .subheadline {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: #555;
+        }
+        
+        .hero-image-wrapper {
+            order: 1; /* Image comes first on mobile */
+            width: 100%;
+        }
+
+        .hero-image-wrapper img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--color-gold);
+            color: var(--color-light);
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0, 0.1);
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+        }
+        #logo_benefits_section{
+            display: block;
+            max-width: 18rem;
+            display: flex;
+            align-self:center;
+        }
+        .logo_benefits{
+            align-items: center;
+            align-content: center;
+            margin: 2rem;
+            justify-self: center;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .cta-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(0,0,0, 0.2);
+        }
+
+        .hero-trust-snippet {
+            margin-top: 15px;
+            font-weight: 500;
+            color: #777;
+        }
+
+        /* --- TRUST & DESIRE SECTION --- */
+        .trust-section {
+            background-color: var(--color-light-secondary);
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px 40px;
+            margin-bottom: 50px;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .trust-badge svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--color-dark);
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid var(--color-gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-card .stars {
+            color: #f39c12;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card .author {
+            font-weight: bold;
+            color: var(--color-dark);
+        }
+
+        /* --- BENEFITS SECTION --- */
+        .benefits-section h2, .gallery-section h2 {
+            text-align: center;
+            margin-top: 3rem;
+            margin-left: 2rem;
+            margin-right: 2rem;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+        .benefits-section {
+            padding-top: 2rem;
+            padding-left: 2rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .benefit-icon {
+            flex-shrink: 0;
+            background-color: var(--color-dark);
+            color: var(--color-gold);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .benefit-item h3 {
+             color: var(--color-dark);
+             margin-bottom: 5px;
+             font-size: 1.2rem;
+        }
+        .benefit-item p {
+            color: #555;
+        }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-section {
+             background-color: var(--color-light-secondary);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* --- OFFER SECTION --- */
+        .offer-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+        .offer-wrapper {
+            background-color: var(--color-light-secondary);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid var(--color-gold);
+        }
+
+        .offer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            text-align: center;
+        }
+        .offer-image img {
+            max-width: 100%;
+            width: 300px;
+            height: auto;
+        }
+
+        .offer-details h3 {
+             font-size: 1.5rem;
+             margin-bottom: 10px;
+        }
+
+        .included-list {
+            list-style: none;
+            margin: 20px 0;
+            text-align: center;
+            display: inline-block;
+        }
+        .included-list li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .included-list li::before {
+            content: '✓';
+            color: var(--color-gold);
+            margin-right: 10px;
+        }
+        
+        .price-box {
+            margin: 20px 0;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #777;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .new-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-gold);
+        }
+
+        .offer-details .duration {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .countdown-timer {
+            margin: 20px 0;
+        }
+        .countdown-timer span {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #555;
+        }
+        #timer {
+            font-size: 2rem;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 2px;
+            color: var(--color-dark);
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 5px;
+            display: inline-block;
+            border: 1px solid #ddd;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--color-light-secondary);
+            font-size: 0.9rem;
+            color: #777;
+            border-top: 1px solid #eee;
+        }
+
+        /* --- RESPONSIVE STYLES --- */
+        
+        /* TABLET */
+        @media (min-width: 768px) {
+            section { padding: 80px 0; }
+            .hero-wrapper {
+                flex-direction: row;
+                text-align: left;
+                gap: 40px;
+            }
+            .hero-content {
+                order: 1;
+                flex: 1;
+                padding-top: 0;
+            }
+            .hero-image-wrapper {
+                order: 2;
+                flex: 1;
+            }
+            .hero h1 { font-size: 3.2rem; }
+            .hero .subheadline, .hero h1 { margin-left: 0; margin-right: 0; }
+
+            .testimonials-grid { grid-template-columns: 1fr 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .offer-content {
+                flex-direction: row;
+                text-align: left;
+            }
+            .offer-image { flex: 1; }
+            .offer-details { flex: 1.2; }
+            .included-list { text-align: left; }
+        }
+
+        /* DESKTOP */
+        @media (min-width: 1024px) {
+            .hero h1 { font-size: 3.8rem; }
+            .hero-wrapper { gap: 60px; }
+            .testimonials-grid { grid-template-columns: 1fr 1fr 1fr; }
+            .gallery-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="announcement-bar">
+        LIMITED TIME: GET 50% OFF YOUR FIRST KIT!
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="hero container">
+       <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1>The Fresh Cut Look. Every Single Day.</h1>
+                <p class="subheadline">Erase thin spots and perfect your lines in seconds with our all-natural Enhancement Pencil Kit.</p>
+                <a href="https://barberrepublicshop.com/cart/44148225966235:1" class="cta-button">Get The Perfect Lineup</a>
+                <p class="hero-trust-snippet">⭐ ⭐ ⭐ ⭐ ⭐ Over 10,000 Happy Customers</p>
+            </div>
+            <div class="hero-image-wrapper">
+                <!-- Main Hero Image -->
+                <img src="./img/IMG_3737.PNG" alt="Before and after using the Enhancement Pencil Kit, showing a sharper hairline and beard.">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- TRUST & DESIRE SECTION -->
+        <section class="trust-section">
+            <div class="container">
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"></path></svg>
+                        <span>Secure Checkout</span>
+                    </div>
+                    <div class="trust-badge">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path></svg>
+                        <span>30-Day Money-Back Guarantee</span>
+                    </div>
+                    <div class="trust-badge">
+                        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm13.5-8.5l1.96 2.5H17V9.5h2.5zM18 18c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"></path></svg>
+                        <span>Fast USA Shipping</span>
+                    </div>
+                </div>
+                <div class="testimonials">
+                    <h2>WHY THOUSANDS MADE THE SWITCH</h2>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"I was skeptical, but this pencil is a game-changer. My hairline looks fuller and sharper than ever. Looks completely natural."</p>
+                            <div class="author">- Michael R.</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"Finally, a solution for my patchy beard! It's easy to apply and literally lasts all day until I shower. Huge confidence booster."</p>
+                            <div class="author">- David C.</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <p>"My barber used this on me and I had to buy one. I use it to keep my cut looking fresh between appointments. 10/10 product."</p>
+                            <div class="author">- Chris S.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section class="gallery-section">
+            <div class="container">
+                <h2>FLAWLESS RESULTS FROM EVERY ANGLE</h2>
+                <div class="gallery-grid">
+                     <!-- Before and After Images -->
+                    <img src="./img/IMG_3745.JPG" alt="Before and after on a temple fade.">
+                    <img src="./img/IMG_3747.jpg" alt="Before and after on a beard line.">
+                    <img src="./img/IMG_3743.jpg" alt="Before and after on short hair.">
+                    <img src="./img/IMG_3748.JPG" alt="Before and after on light hair.">
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFITS SECTION -->
+        <section class="benefits-section">
+            <div class="container">
+                <div class="logo_benefits">
+                    <img id="logo_benefits_section" src="./img/IMG_3749.JPG" alt="barber republic logo">
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💈</div>
+                        <div>
+                            <h3>Instant Barber-Sharp Look</h3>
+                            <p>Get a professional enhancement at home, without needing to visit a barber.</p>
+                        </div>
+                    </div>
+                     <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <div>
+                            <h3>Save Money</h3>
+                            <p>Our enhancement kit will last you at least 6 months, helping you save money over time.</p>
+                        </div>
+                    </div>
+                    
+                     <div class="benefit-item">
+                        <div class="benefit-icon">💧</div>
+                        <div>
+                            <h3>Simple 3-Step Application - Lasts All Day</h3>
+                            <br>
+                            <ol style="font-weight: 700; padding-left: 1.5rem;">
+                                <li> Make sure your hair & skin are dry.</li>
+                                <br>
+                                <li>Fill the area with the enhancement pencil.</li>
+                                <br>
+                                <li>Use hold spray to make it sweat- and waterproof.</li>
+                                <br>
+                            </ol>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OFFER & URGENCY SECTION -->
+        <section class="offer-section" id="offer">
+            <div class="container">
+                <div class="offer-wrapper">
+                    <div class="offer-content">
+                        <div class="offer-image">
+                            <!-- What's in the kit Image -->
+                            <img src="./img/IMG_3731.PNG" alt="The Enhancement Pencil Kit including the pencil, brush, and sharpener.">
+                        </div>
+                        <div class="offer-details">
+                            <h2>Get Your Kit Today!</h2>
+                            <h3>Everything You Need For a Perfect Finish</h3>
+                            <ul class="included-list">
+                                <li>Enhancement Pencil</li>
+                                <li>Precision Blending Brush</li>
+                                <li>Pencil Sharpener</li>
+                            </ul>
+                            <div class="price-box">
+                                <span class="old-price">$29.99</span>
+                                <span class="new-price">$19.99</span>
+                            </div>
+                            <p class="duration">With average daily use, one kit lasts about 6 months!</p>
+                            <div class="countdown-timer">
+                                <span>🔥 Flash Sale Ends In:</span>
+                                <div id="timer">02:15:45</div>
+                            </div>
+                            <a href="https://barberrepublicshop.com/cart/44148225966235:1" class="cta-button">Yes! Send Me My Kit Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Barber Republic. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Countdown Timer
+        function startTimer() {
+            const timerElement = document.getElementById('timer');
+            if (!timerElement) return;
+
+            let timeInSeconds = (2 * 60 * 60) + (15 * 60) + 45; // 2 hours, 15 mins, 45 secs
+
+            const interval = setInterval(() => {
+                if (timeInSeconds <= 0) {
+                    clearInterval(interval);
+                    timerElement.textContent = "00:00:00";
+                    return;
+                }
+
+                const hours = Math.floor(timeInSeconds / 3600);
+                const minutes = Math.floor((timeInSeconds % 3600) / 60);
+                const seconds = timeInSeconds % 60;
+
+                timerElement.textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                
+                timeInSeconds--;
+            }, 1000);
+        }
+
+        // Start the timer when the page loads
+        document.addEventListener('DOMContentLoaded', startTimer);
+    </script>
+</body>
+</html>
+
